@@ -7,11 +7,13 @@ import icebreaker.getmeholidaylist.dto.HolidayDto;
 
 public class HtmlUtility {
 
-    public static String buildHtmlTable(List<HolidayDto> list, String country, int year, String type) {
+    public static String buildHtmlTable(List<HolidayDto> list, String cntry, int yyyy, String typ) {
         StringBuilder sb = new StringBuilder();
+        
+        String typValue = (typ==null) ? "" : typ;
 
         sb.append("<html><body>");
-        sb.append("<h2>").append(type).append(" Holidays of ").append(country).append(" In The Year ").append(year).append("</h2>");
+        sb.append("<h2>").append(typ).append(" Holidays of ").append(cntry).append(" In The Year ").append(yyyy).append("</h2>");
         sb.append("<table border='1' cellpadding='6' cellspacing='0' ")
                 .append("style='border-collapse:collapse;font-family:Arial;'>");
 

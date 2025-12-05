@@ -22,20 +22,20 @@ public class HolidayController {
         this.holidayService = holidayService;
     }
 
-    @GetMapping("/holidays")
+    @GetMapping("/hldys")
     public ResponseEntity<?> getHolidays(
-            @RequestParam String country,
-            @RequestParam int year,
-            @RequestParam(required = false) Integer month,
-            @RequestParam(required = false) Integer day,
-            @RequestParam(required = false) String type) {
+            @RequestParam String cntry,
+            @RequestParam int yyyy,
+            @RequestParam(required = false) Integer mm,
+            @RequestParam(required = false) Integer dd,
+            @RequestParam(required = false) String typ) {
         
         
         List<HolidayDto> nhList =
-                holidayService.getHolidays(country, year, month, day, type);
+                holidayService.getHolidays(cntry, yyyy, mm, dd, typ);
 
         // Build HTML table from the NH list
-        String htmlTable = HtmlUtility.buildHtmlTable(nhList, country, year, type);
+        String htmlTable = HtmlUtility.buildHtmlTable(nhList, cntry, yyyy, typ);
 
         return ResponseEntity.ok()
                 .header("Content-Type", "text/html")
