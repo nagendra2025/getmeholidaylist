@@ -9,11 +9,17 @@ public class HtmlUtility {
 
     public static String buildHtmlTable(List<HolidayDto> list, String cntry, int yyyy, String typ) {
         StringBuilder sb = new StringBuilder();
-        
+        String cntryName = new String();
         String typValue = (typ==null) ? "" : typ;
+        int hldysCnt = 0;
+        
+        if (list.size() !=0 ) {
+        	cntryName = list.get(0).getCountryName();
+        	hldysCnt=list.size();
+        }
 
         sb.append("<html><body>");
-        sb.append("<h2>").append(typValue).append(" Holidays of ").append(cntry).append(" In The Year ").append(yyyy).append("</h2>");
+        sb.append("<h2>").append(hldysCnt+" ").append(typValue).append(" Holidays of ").append(cntryName).append(" In The Year ").append(yyyy).append("</h2>");
         sb.append("<table border='1' cellpadding='6' cellspacing='0' ")
                 .append("style='border-collapse:collapse;font-family:Arial;'>");
 
