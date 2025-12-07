@@ -15,7 +15,10 @@ public class HtmlUtility {
         
         if (list.size() !=0 ) {
         	cntryName = list.get(0).getCountryName();
-        	hldysCnt=list.size();
+        	hldysCnt = (int) list.stream()
+        	        .map(holidaydto -> holidaydto.getDate())   // returns LocalDate
+        	        .distinct()
+        	        .count();
         }
 
         sb.append("<html><body>");
