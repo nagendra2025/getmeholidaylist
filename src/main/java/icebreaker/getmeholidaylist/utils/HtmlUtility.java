@@ -7,34 +7,47 @@ import icebreaker.getmeholidaylist.dto.HolidayDto;
 
 public class HtmlUtility {
 
-    public static String buildHtmlTable(List<HolidayDto> list, String cntry, int yyyy, String typ) {
+    public static String buildHtmlTable(List<HolidayDto> list, String cntry, int yyyy, String typ, PageMode mode) {
         StringBuilder sb = new StringBuilder();
-        String cntryName = new String();
+        
+        String cntryName = (cntry == null) ? "" : cntry;
         String typValue = (typ==null) ? "" : typ;
-        int hldysCnt = 0;
+        long hldysCnt = 0;
         
         if (list.size() !=0 ) {
         	cntryName = list.get(0).getCountryName();
-        	hldysCnt = (int) list.stream()
+        	hldysCnt = list.stream()
         	        .map(holidaydto -> holidaydto.getDate())   // returns LocalDate
         	        .distinct()
         	        .count();
         }
 
-        sb.append("<html><body>");
-        sb.append("<h2>").append(hldysCnt+" ").append(typValue).append(" Holidays of ").append(cntryName).append(" In The Year ").append(yyyy).append("</h2>");
+       if (mode == PageMode.TODAY){
+        sb.append("<h2>")
+        .append(cntryName).append(" Today ")
+        .append(" In The Year ").append(yyyy)
+        .append("</h2>");
+
+        } else if (mode == PageMode.HOLIDAYS) {
+    	   sb.append("<h2>")
+          .append(hldysCnt).append(" ").append(typValue)
+          .append(" Holidays of ").append(cntryName)
+          .append(" In The Year ").append(yyyy)
+          .append("</h2>");
+        }
+       
         sb.append("<table border='1' cellpadding='6' cellspacing='0' ")
-                .append("style='border-collapse:collapse;font-family:Arial;'>");
+          .append("style='border-collapse:collapse;font-family:Arial;'>");
 
         // Header row
-        sb.append("<tr style='background:#f2f2f2;'>");
-        sb.append("<th>Date</th>");
-        sb.append("<th>Day</th>");
-        sb.append("<th>Purpose</th>");
-        sb.append("<th>Type</th>");
-        sb.append("</tr>");
+        sb.append("<tr style='background:#f2f2f2;'>")
+          .append("<th>Date</th>")
+          .append("<th>Day</th>")
+          .append("<th>Purpose</th>")
+          .append("<th>Type</th>")
+          .append("</tr>");
 
-        // Data rows
+        // Data rows (0 or more)
         for (HolidayDto h : list) {
             sb.append("<tr>");
             sb.append("<td>").append(h.getDate()).append("</td>");
@@ -44,7 +57,34 @@ public class HtmlUtility {
             sb.append("</tr>");
         }
 
-        sb.append("</table></body></html>");
+        sb.append("</table>");
         return sb.toString();
     }
+    
+    
+    public static String buildErrorTable(String cntry, String message, int yyyy) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("<h2>")
+          .append(cntry.toUpperCase()).append(" Today In The Year ").append(yyyy)
+          .append("</h2>");
+
+        sb.append("<table border='1' cellpadding='6' cellspacing='0' ")
+          .append("style='border-collapse:collapse;font-family:Arial;'>");
+
+        sb.append("<tr style='background:#f2f2f2;'>")
+          .append("<th>Status</th>")
+          .append("<th>Message</th>")
+          .append("</tr>");
+
+        sb.append("<tr>")
+          .append("<td style='color:red;font-weight:bold;'>Error</td>")
+          .append("<td>").append(message).append("</td>")
+          .append("</tr>");
+
+        sb.append("</table>");
+
+        return sb.toString();
+    }
+
 }

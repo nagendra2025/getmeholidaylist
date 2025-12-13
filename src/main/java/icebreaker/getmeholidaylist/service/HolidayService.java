@@ -1,7 +1,9 @@
 package icebreaker.getmeholidaylist.service;
 
 import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +37,7 @@ public class HolidayService {
 
 		return response.getResponse().getHolidays().stream().map(this::toDto).collect(Collectors.toList());
 	}
-
+	
 	private void validateRequest(String country, int year, Integer month, Integer day) {
 
 		if (country == null || country.isBlank()) {
@@ -86,4 +88,6 @@ public class HolidayService {
 		return new HolidayDto(holiday.getName(), holiday.getDescription(), countryCode, countryName, dateIso,
 				holiday.getType());
 	}
+
+	
 }
