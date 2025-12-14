@@ -9,7 +9,7 @@ public class HtmlUtility {
 
     public static String buildHtmlTable(List<HolidayDto> list, String cntry, int yyyy, String typ, PageMode mode) {
         StringBuilder sb = new StringBuilder();
-        
+        String noHolidays= "No special holiday today !!!";
         String cntryName = (cntry == null) ? "" : cntry;
         String typValue = (typ==null) ? "" : typ;
         long hldysCnt = 0;
@@ -20,6 +20,9 @@ public class HtmlUtility {
         	        .map(holidaydto -> holidaydto.getDate())   // returns LocalDate
         	        .distinct()
         	        .count();
+        } else {
+        	cntryName = CountryUtil.countryNameFromCode(cntry);
+        	
         }
 
        if (mode == PageMode.TODAY){
@@ -47,17 +50,20 @@ public class HtmlUtility {
           .append("<th>Type</th>")
           .append("</tr>");
 
-        // Data rows (0 or more)
-        for (HolidayDto h : list) {
-            sb.append("<tr>");
-            sb.append("<td>").append(h.getDate()).append("</td>");
-            sb.append("<td>").append(h.getName()).append("</td>");
-            sb.append("<td>").append(h.getDescription()).append("</td>");
-            sb.append("<td>").append(h.getTypes()).append("</td>");
-            sb.append("</tr>");
-        }
-
+        
+	        // Data rows (0 or more)
+	        for (HolidayDto h : list) {
+	            sb.append("<tr>");
+	            sb.append("<td>").append(h.getDate()).append("</td>");
+	            sb.append("<td>").append(h.getName()).append("</td>");
+	            sb.append("<td>").append(h.getDescription()).append("</td>");
+	            sb.append("<td>").append(h.getTypes()).append("</td>");
+	            sb.append("</tr>");
+	        }
+        
         sb.append("</table>");
+        if (list.size() ==0 )
+        	sb.append("<h3>" + noHolidays + "</h3>");
         return sb.toString();
     }
     
