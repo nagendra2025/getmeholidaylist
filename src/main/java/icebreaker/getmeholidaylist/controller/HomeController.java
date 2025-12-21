@@ -16,7 +16,7 @@ public class HomeController {
 				  <style>
 				    body { font-family: Arial; padding: 20px; }
 				    table { border-collapse: collapse; width: 100%; }
-				    th, td { border: 1px solid #ddd; padding: 6px; vertical-align: top; }
+				    th, td { border: 1px solid #ddd; padding: 6px; vertical-align: top; text-align: center; }
 				    th { background: #f2f2f2; }
 				    .gap { width: 10px; background: #fff; border-left: none; border-right: none; }
 				    .code { width: 70px; text-align: center; font-weight: bold; }
@@ -27,8 +27,8 @@ public class HomeController {
 
 	                <h2>1. Endpoint: /api/hldys</h2>
 
-	                <p><strong>Base URL:</strong> /api/hldys</p>
-
+	                <p><strong>Base URL:</strong> Host URL seen in the browser, append the above endpoint and follow providing the query params as below from A to F </p>
+                    <p><strong>Example :</strong> Host URL seen in the browser/api/hldys?cntry=CA&yyyy=2024</p>
 	                <h3>Query Parameters</h3>
 	                <table border="1" cellpadding="6" cellspacing="0" 
 	                       style="border-collapse:collapse; font-family:Arial;">
@@ -45,17 +45,17 @@ public class HomeController {
 	                    <tr>
 	                        <td>yyyy</td>
 	                        <td>Yes</td>
-	                        <td>Year of the holidays (2020–2100)</td>
+	                        <td>Year of the holidays (2020 to 2100)</td>
 	                    </tr>
 	                    <tr>
 	                        <td>mm</td>
 	                        <td>No*</td>
-	                        <td>Month (1–12). Must be used only when <strong>day</strong> is also provided.</td>
+	                        <td>Month (1 to 12). Must be used only when <strong>day</strong> is also provided.</td>
 	                    </tr>
 	                    <tr>
 	                        <td>dd</td>
 	                        <td>No*</td>
-	                        <td>Day of month (1–31). Must be used only with <strong>month</strong>.</td>
+	                        <td>Day of month (1 to 31). Must be used only with <strong>month</strong>.</td>
 	                    </tr>
 	                    <tr>
 	                        <td>typ</td>
@@ -87,8 +87,8 @@ public class HomeController {
 	                
 	                <h2>3. Endpoint: /api/tdy</h2>
 
-	                <p><strong>Base URL:</strong> /api/tdy</p>
-
+	                <p><strong>Base URL:</strong>  Host URL seen in the browser, append the above endpoint and follow providing the query params as below from A to C </p>
+	        		<p><strong>Example :</strong>  Host URL seen in the browser/api/tdy?cntrys=ca,in,us</p>
 	                <h3>Query Parameters</h3>
 	                <table border="1" cellpadding="6" cellspacing="0" 
 	                       style="border-collapse:collapse; font-family:Arial;">
@@ -109,12 +109,11 @@ public class HomeController {
 	        		<h3>A) Display today's holiday for a single country</h3>
 	                <pre>/api/tdy?cntrys=ca</pre>	                
 
-	                <h3>B) Display today's holiday from the list of given countries, separated by ,</h3>
+	                <h3>B) Display today's holiday for a list of given countries, separated by ,</h3>
 	                <pre>/api/tdy?cntrys=ca,in,us</pre>
 	                
-	                <h3>C) Display today's holiday from the list of valid countries, for invalid countries displays the error message</h3>
-	                <pre>/api/tdy?cntrys=ca,inx,us</pre>
-	                
+	                <h3>C) Display today's holiday for a list of valid countries, for invalid countries displays the error message</h3>
+	                <pre>/api/tdy?cntrys=ca,inx,us</pre>	                
 	                
 	                <h2>5. Country Codes (ISO-3166)</h2>
 

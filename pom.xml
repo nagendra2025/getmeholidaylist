@@ -72,7 +72,7 @@
 		    </execution>
  		</executions>
         <configuration>
-          <mainClass>com.example.getmeholidays.GetmeholidaysApplication</mainClass>
+          <mainClass>icebreaker.getmeholidaylist.GetmeholidaylistApplication</mainClass>
         </configuration>
       </plugin>
 
