@@ -25,6 +25,7 @@ public class HomeController {
 	            <body style="font-family: Arial; line-height: 1.6; padding: 20px;">
 	                <h1>GetMeHolidaysList API - Help Page</h1>
 	        		<p> The help and usage of the two endpoints <strong>/api/hldys</strong> & <strong>/api/tdy</strong> are provided below. </p>
+	        		<p><strong>Note: </strong> UI interface is yet to develop. As of now all the usage examples to be try out within the browser only </p>
 	                <h2>1. Endpoint: /api/hldys</h2>
 
 	                <p><strong>Base URL:</strong> Host URL seen in the browser, append the above endpoint and follow providing the query params as below from A to F </p>
