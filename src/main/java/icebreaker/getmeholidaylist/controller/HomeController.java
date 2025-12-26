@@ -24,7 +24,7 @@ public class HomeController {
 				</head>
 	            <body style="font-family: Arial; line-height: 1.6; padding: 20px;">
 	                <h1>GetMeHolidaysList API - Help Page</h1>
-	        		<p> The help and usage of the two endpoints <strong>/api/hldys</strong> & <strong>/api/tdy</strong> are provided below. </p>
+	        		<p> The GetMeHolidaysList API provides these two endpoints <strong>/api/hldys</strong> & <strong>/api/tdy</strong>. The help and usage examples are provided below. </p>
 	        		<p><strong>Note: </strong> UI interface is yet to develop. As of now all the usage examples to be try out within the browser only </p>
 	                <h2>1. Endpoint: /api/hldys</h2>
 
@@ -46,7 +46,7 @@ public class HomeController {
 	                    </tr>
 	                    <tr>
 	                        <td>yyyy</td>
-	                        <td>Yes</td>
+	                        <td>No*</td>
 	                        <td>Year of the holidays (2020 to 2100)</td>
 	                    </tr>
 	                    <tr>
@@ -61,20 +61,20 @@ public class HomeController {
 	                    </tr>
 	                    <tr>
 	                        <td>typ</td>
-	                        <td>No</td>
+	                        <td>No*</td>
 	                        <td>Filter by holiday type (optional)</td>
 	                    </tr>
 	                </table>
 
 	                <h3>Usage Examples</h3>
 	                
-	                <h3>A) Get all holidays of a country, for the current year if yyyy is not provided</h3>
-	                <pre>/api/hldys?cntry=CA</pre>
+	                <h3>A) Get all holidays of a country for the current year, if yyyy is not provided</h3>
+	                <pre>/api/hldys?cntry=CA (formatted table)</pre>
 
-	                <h3>B) Get all holidays of a country/year</h3>
+	                <h3>B) Get all holidays of a country/year (formatted table)</h3>
 	                <pre>/api/hldys?cntry=CA&yyyy=2024</pre>
 
-	                <h3>C) Get holidays for a specific date</h3>
+	                <h3>C) Get holidays for a specific date (formatted table)</h3>
 	                <pre>/api/hldys?cntry=CA&yyyy=2024&mm=1&dd=1</pre>
 
 	                <h3>D) Get only National Holidays (formatted table)</h3>
@@ -112,13 +112,13 @@ public class HomeController {
 
 	                <h3> Usage Examples</h3>
 
-	        		<h3>A) Display today's holiday for a single country</h3>
+	        		<h3>A) Display today's holiday for a single country (formatted table)</h3>
 	                <pre>/api/tdy?cntrys=ca</pre>	                
 
-	                <h3>B) Display today's holiday for a list of given countries, separated by ,</h3>
+	                <h3>B) Display today's holiday for a list of given countries, separated by , (formatted table)</h3>
 	                <pre>/api/tdy?cntrys=ca,in,us</pre>
 	                
-	                <h3>C) Display today's holiday for a list of valid countries, for invalid countries displays the error message</h3>
+	                <h3>C) Display today's holiday for a list of valid countries, for invalid countries displays the error message (formatted table)</h3>
 	                <pre>/api/tdy?cntrys=ca,inx,us</pre>	                
 	                
 	                <h2>3. Country Codes (ISO-3166)</h2>
@@ -134,11 +134,6 @@ public class HomeController {
 	                                
 	                <h2>4. Errors</h2>
 	                <p>Invalid combinations return helpful error messages</p>
-
-	                <hr>
-	                <p style="font-size: small; color: gray;">
-	                    GetMeHolidaysList API © 2025 & @ 2026
-	                </p>
 	            </body>
 	            </html>
 	            """;
