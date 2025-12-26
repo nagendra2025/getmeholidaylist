@@ -33,7 +33,18 @@ public class HolidayService {
 			return Collections.emptyList();
 		}
 
-		return response.getResponse().getHolidays().stream().map(this::toDto).collect(Collectors.toList());
+		return response.getResponse().getHolidays().stream()
+		        .map(this::toDto)
+		        .filter(dto -> dto.getDate() != null && !dto.getDate().isBlank()) // safety
+		        .collect(Collectors.toMap(
+		                HolidayDto::getDate,          // key = date (yyyy-MM-dd)
+		                dto -> dto,                   // value
+		                (first, duplicate) -> first,  // keep first one if same date repeats
+		                java.util.LinkedHashMap::new  // preserve original order
+		        ))
+		        .values()
+		        .stream()
+		        .collect(Collectors.toList());
 	}
 	
 	private void validateRequest(String country, int year, Integer month, Integer day) {
