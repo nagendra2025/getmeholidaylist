@@ -43,17 +43,18 @@ public class HolidayController {
     @GetMapping("/hldys")
     public ResponseEntity<?> getHolidays(
             @RequestParam String cntry,
-            @RequestParam int yyyy,
+            @RequestParam(required = false) Integer yyyy,
             @RequestParam(required = false) Integer mm,
             @RequestParam(required = false) Integer dd,
             @RequestParam(required = false) String typ) {
-        
+
+        int year = (yyyy != null) ? yyyy : LocalDate.now().getYear();
         
         List<HolidayDto> nhList =
-                holidayService.getHolidays(cntry, yyyy, mm, dd, typ);
+                holidayService.getHolidays(cntry, year, mm, dd, typ);
 
         // Build HTML table from the NH list
-        String htmlTable = HtmlUtility.buildHtmlTable(nhList, cntry, yyyy, typ, PageMode.HOLIDAYS);
+        String htmlTable = HtmlUtility.buildHtmlTable(nhList, cntry, year, typ, PageMode.HOLIDAYS);
 
         return ResponseEntity.ok()
                 .header("Content-Type", "text/html")

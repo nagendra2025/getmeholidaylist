@@ -67,23 +67,26 @@ public class HomeController {
 	                </table>
 
 	                <h3>Usage Examples</h3>
+	                
+	                <h3>A) Get all holidays of a country, for the current year if yyyy is not provided</h3>
+	                <pre>/api/hldys?cntry=CA</pre>
 
-	                <h3>A) Get all holidays of a country/year</h3>
+	                <h3>B) Get all holidays of a country/year</h3>
 	                <pre>/api/hldys?cntry=CA&yyyy=2024</pre>
 
-	                <h3>B) Get holidays for a specific date</h3>
+	                <h3>C) Get holidays for a specific date</h3>
 	                <pre>/api/hldys?cntry=CA&yyyy=2024&mm=1&dd=1</pre>
 
-	                <h3>C) Get only National Holidays (formatted table)</h3>
+	                <h3>D) Get only National Holidays (formatted table)</h3>
 	                <pre>/api/hldys?cntry=CA&yyyy=2024&typ=national</pre>
 
-	        		<h3>D) Get only Religious Holidays (formatted table)</h3>
+	        		<h3>E) Get only Religious Holidays (formatted table)</h3>
 	                <pre>/api/hldys?cntry=CA&yyyy=2024&typ=religious</pre>
 	                
-	                <h3>E) Get only Observance Holidays (formatted table)</h3>
+	                <h3>F) Get only Observance Holidays (formatted table)</h3>
 	                <pre>/api/hldys?cntry=CA&yyyy=2024&typ=observance</pre>
 	                
-	                <h3>F) Get only Local Holidays (formatted table)</h3>
+	                <h3>G) Get only Local Holidays (formatted table)</h3>
 	                <pre>/api/hldys?cntry=CA&yyyy=2024&typ=local</pre>
 	                
 	                
